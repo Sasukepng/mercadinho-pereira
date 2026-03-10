@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCC | Loja Virtual Mercadinho Pereira (MP)</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #2b1a3a 0%, #1a2639 100%);
+            color: #e0e0e0;
+            padding: 2rem 1.5rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(40, 25, 55, 0.9);
+            backdrop-filter: blur(4px);
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+            padding: 2.5rem 2.2rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* header / identidade */
+        .header-tcc {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border-bottom: 3px dashed #c9a959;
+            padding-bottom: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .titulo-principal {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffd966;
+            line-height: 1.2;
+        }
+
+        .titulo-principal i {
+            color: #e67e22;
+            margin-right: 12px;
+        }
+
+        .subtitulo {
+            font-size: 1.2rem;
+            color: #f0e6d2;
+            background: #5e3a6b;
+            display: inline-block;
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .autores {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.5rem;
+            margin: 1rem 0 0.5rem;
+            font-weight: 500;
+            color: #d4af37;
+        }
+
+        .autores span {
+            background: #2e1b3c;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            border: 1px solid #b8860b;
+            color: #ffd700;
+        }
+
+        .orientadores {
+            font-size: 1rem;
+            color: #ffd966;
+            background: #3a2a47;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            border-left: 6px solid #e67e22;
+            margin-top: 0.5rem;
+        }
+
+        /* cards de resumo */
+        .resumo-card {
+            background: #2d1d3a;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #b8860b;
+            box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffb347;
+            margin-bottom: 1.3rem;
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 0.3rem;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+            color: #e67e22;
+        }
+
+        .highlight-text {
+            font-size: 1.15rem;
+            color: #f0e6d2;
+            background: #3e2a4a;
+            padding: 1.2rem 1.8rem;
+            border-radius: 28px;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            border: 1px solid #b8860b;
+        }
+
+        .objetivos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0;
+        }
+
+        .objetivo-item {
+            background: #2e1b3c;
+            padding: 1.2rem 1rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 16px -10px #000;
+            border: 1px solid #b8860b;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 500;
+            color: #ffd700;
+        }
+
+        .objetivo-item i {
+            color: #e67e22;
+            font-size: 1.7rem;
+            min-width: 32px;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #5e3a6b;
+            color: #ffd700;
+            font-weight: 600;
+            padding: 0.5rem 1.3rem;
+            border-radius: 60px;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            border: 1px solid #b8860b;
+        }
+
+        .tech-badge i {
+            margin-right: 6px;
+            color: #e67e22;
+        }
+
+        .resultados-box {
+            background: #2d1d3a;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin: 2.2rem 0;
+            border-left: 10px solid #e67e22;
+            border: 1px solid #b8860b;
+        }
+
+        .resultados-box div, .resultados-box p {
+            color: #f0e6d2;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #ffd700;
+            font-size: 0.95rem;
+            background: #2e1b3c;
+            padding: 1.2rem;
+            border-radius: 100px;
+            border: 1px solid #b8860b;
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* diagramas fictícios (simbolizando UML) */
+        .uml-simbolo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .uml-card {
+            background: #2e1b3c;
+            padding: 1rem;
+            border-radius: 1.5rem;
+            border: 2px solid #b8860b;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            box-shadow: 5px 5px 0 #5e3a6b;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- cabeçalho com título e autores -->
+        <div class="header-tcc">
+            <div class="titulo-principal">
+                <i class="fas fa-store-alt"></i> Mercadinho Pereira (MP)
+            </div>
+            <div class="subtitulo">
+                <i class="fas fa-laptop"></i> Sistema de reserva online · Técnico em Informática · 2025
+            </div>
+            <div class="autores">
+                <span><i class="fas fa-user-graduate"></i> Ângelo Gomes</span>
+                <span><i class="fas fa-user-graduate"></i> Ezequiel Araújo</span>
+                <span><i class="fas fa-user-graduate"></i> João Gabriel Lemos</span>
+                <span><i class="fas fa-user-graduate"></i> Luiz Felipe Morais</span>
+                <span><i class="fas fa-user-graduate"></i> Thiago Morais</span>
+            </div>
+            <div class="orientadores">
+                <i class="fas fa-chalkboard-teacher"></i> Orientação: Fabiano Vilhete · Simone Neves · Wagner dos Santos
+            </div>
+        </div>
+
+        <!-- resumo / abstract -->
+        <div class="resumo-card">
+            <div class="section-title">
+                <i class="fas fa-scroll"></i> Resumo
+            </div>
+            <p class="highlight-text">
+                <i class="fas fa-quote-left" style="color:#e67e22; opacity:0.8;"></i> 
+                O comércio eletrônico tem se mostrado uma ferramenta essencial para a modernização de pequenos negócios. 
+                Este trabalho descreve o processo de análise, projeto e desenvolvimento de um sistema de reserva online para o 
+                <strong>Mercadinho Pereira (MP)</strong>, permitindo reservas via internet e retirada na loja física sem pagamento online. 
+                Utilizamos modelagem UML, front-end com HTML, CSS, JavaScript e back-end com PHP e MySQL. 
+                O resultado é um site responsivo com catálogo, reservas, confirmação por e-mail e área administrativa.
+            </p>
+        </div>
+
+        <!-- contexto + justificativa -->
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2.5rem;">
+            <div style="flex: 1; min-width: 250px;">
+                <div class="section-title" style="font-size: 1.5rem;">
+                    <i class="fas fa-store"></i> Contexto
+                </div>
+                <p style="background: #2e1b3c; border-radius: 20px; padding: 1.5rem; border: 1px solid #b8860b; color: #f0e6d2;">
+                    O Mercadinho Pereira, estabelecimento local, precisava modernizar suas operações. Clientes queriam garantir produtos antes de ir à loja. 
+                    A ausência de um canal digital limitava o atendimento. Nossa solução: <strong style="color:#ffd700;">reserva online sem pagamento</strong> — modelo "clique e retire".
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <div class="section-title" style="font-size: 1.5rem;">
+                    <i class="fas fa-bullseye"></i> Justificativa
+                </div>
+                <p style="background: #2e1b3c; border-radius: 20px; padding: 1.5rem; border: 1px solid #b8860b; color: #f0e6d2;">
+                    Solução estratégica para otimizar vendas, alinhada às tendências de varejo. Atende perfis conservadores (pagamento só na retirada) 
+                    e serve como modelo replicável para pequenos comércios com recursos limitados.
+                </p>
+            </div>
+        </div>
+
+        <!-- objetivos -->
+        <div class="section-title"><i class="fas fa-list-check"></i> Objetivos</div>
+        <div style="background: #2d1d3a; border-radius: 2rem; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid #b8860b;">
+            <p style="font-weight: 600; margin-bottom: 0.8rem; color: #ffd700;">🎯 Geral:</p>
+            <p style="background: #3e2a4a; padding: 0.7rem 1.5rem; border-radius: 40px; border: 1px solid #b8860b; color: #f0e6d2;">Desenvolver sistema de reserva online funcional e intuitivo para o Mercadinho Pereira.</p>
+            <p style="font-weight: 600; margin: 1.5rem 0 0.8rem; color: #ffd700;">📌 Específicos:</p>
+            <div class="objetivos-grid">
+                <div class="objetivo-item"><i class="fas fa-diagram-project"></i> Modelagem UML</div>
+                <div class="objetivo-item"><i class="fab fa-html5"></i> Front-end responsivo</div>
+                <div class="objetivo-item"><i class="fab fa-php"></i> Back-end PHP/MySQL</div>
+                <div class="objetivo-item"><i class="fas fa-gear"></i> Módulo administrativo</div>
+                <div class="objetivo-item"><i class="fas fa-envelope"></i> Confirmação por e-mail</div>
+                <div class="objetivo-item"><i class="fas fa-check-circle"></i> Validação de usabilidade</div>
+            </div>
+        </div>
+
+        <!-- desenvolvimento (ferramentas, etapas) -->
+        <div class="section-title"><i class="fas fa-code"></i> Desenvolvimento & Tecnologias</div>
+        <div class="resumo-card" style="background: #2d1d3a;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                <span class="tech-badge"><i class="fas fa-database"></i> MySQL</span>
+                <span class="tech-badge"><i class="fas fa-project-diagram"></i> UML</span>
+            </div>
+
+            <p style="color: #ffd700;"><i class="fas fa-pencil-ruler" style="color: #e67e22;"></i> <strong>Etapas do projeto:</strong></p>
+            <ul style="margin-left: 2rem; columns: 2 200px; list-style-type: circle; color: #f0e6d2;">
+                <li>Modelagem UML (classes, caso de uso)</li>
+                <li>Front-end: catálogo + carrinho de reservas</li>
+                <li>Back-end: lógica em PHP, banco MySQL</li>
+                <li>Área administrativa protegida</li>
+                <li>Testes de funcionamento e e-mail</li>
+            </ul>
+
+            <!-- pequena representação UML visual -->
+            <div class="uml-simbolo">
+                <div class="uml-card">[Cliente] → reserva</div>
+                <div class="uml-card">+1..* (Produto)</div>
+                <div class="uml-card">👤 Admin <<gerencia>></div>
+                <div class="uml-card">📦 Estoque</div>
+            </div>
+        </div>
+
+        <!-- resultados e benefícios -->
+        <div class="resultados-box">
+            <div style="display: flex; gap: 0.8rem; align-items: center;">
+                <i class="fas fa-trophy" style="font-size: 2.2rem; color: #ffd700;"></i>
+                <span style="font-size: 1.8rem; font-weight: 700; color: #ffd700;">Resultados</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                <div><i class="fas fa-bolt" style="color:#e67e22;"></i> Agilidade no atendimento (fila reduzida)</div>
+                <div><i class="fas fa-boxes" style="color:#e67e22;"></i> Controle de estoque em tempo real</div>
+                <div><i class="fas fa-globe" style="color:#e67e22;"></i> Presença digital do mercadinho</div>
+                <div><i class="fas fa-check-circle" style="color:#e67e22;"></i> Sistema validado com sucesso</div>
+            </div>
+            <p style="font-size: 1.1rem;"><i class="fas fa-quote-right" style="color:#e67e22;"></i> O sistema separa o produto no estoque assim que a reserva é feita — garantia de disponibilidade.</p>
+        </div>
+
+        <!-- conclusão -->
+        <div class="section-title"><i class="fas fa-flag-checkered"></i> Conclusão</div>
+        <div style="background: #2e1b3c; border-radius: 2rem; padding: 1.8rem; margin: 1rem 0 2rem; border-left: 12px solid #e67e22; border: 1px solid #b8860b;">
+            <p style="font-size: 1.2rem; color: #f0e6d2;">
+                ✅ O TCC atingiu plenamente o objetivo: criar um sistema de reserva online para o Mercadinho Pereira. 
+                Utilizamos UML, HTML, CSS, JS, PHP e MySQL. O sistema modernizou o comércio, permitindo reservas online com retirada presencial. 
+                <strong style="color:#ffd700;">Valor do trabalho:</strong> mostrar que pequenos negócios podem usar tecnologia simples e barata para melhorar atendimento e organização.
+            </p>
+        </div>
+
+        <!-- equipe / dedicatórias -->
+        <div class="section-title"><i class="fas fa-heart" style="color:#e67e22;"></i> Dedicatórias da equipe</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between; background: #2d1d3a; border-radius: 2.5rem; padding: 1.8rem; border: 1px solid #b8860b;">
+            <div style="flex: 1 1 150px; color: #f0e6d2;"><i class="fas fa-pray" style="color:#e67e22;"></i> <strong style="color:#ffd700;">Ângelo:</strong> "à minha mãe, meu pai, meu cachorro Bob (GOAT) e a Deus."</div>
+            <div style="flex: 1 1 150px; color: #f0e6d2;"><i class="fas fa-users" style="color:#e67e22;"></i> <strong style="color:#ffd700;">Ezequiel:</strong> "aos professores e minha irmã que me deu oportunidade."</div>
+            <div style="flex: 1 1 150px; color: #f0e6d2;"><i class="fas fa-heart" style="color:#e67e22;"></i> <strong style="color:#ffd700;">João Gabriel:</strong> "minha mãe, meu pai, minha namorada e a Deus."</div>
+            <div style="flex: 1 1 150px; color: #f0e6d2;"><i class="fas fa-chalkboard" style="color:#e67e22;"></i> <strong style="color:#ffd700;">Luiz Felipe:</strong> "minha mãe, meu pai, professor Luan Winck e a Deus."</div>
+            <div style="flex: 1 1 150px; color: #f0e6d2;"><i class="fas fa-star" style="color:#e67e22;"></i> <strong style="color:#ffd700;">Thiago:</strong> "minha mãe e a Deus que iluminaram meu caminho."</div>
+        </div>
+
+        <!-- rodapé com data e banca -->
+        <footer>
+            <i class="fas fa-calendar-alt" style="color:#e67e22;"></i> Nova Iguaçu, 2025 • 
+            <strong>Banca examinadora:</strong> Fabiano Vilhete, Simone Neves, Wagner dos Santos e membros convidados.<br>
+            <span style="opacity: 0.7;">Trabalho de Conclusão de Curso - Técnico em Informática · Colégio SR MILLENNIUM</span>
+        </footer>
+    </div>
+</body>
+</html>
